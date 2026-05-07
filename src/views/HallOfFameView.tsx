@@ -1,4 +1,4 @@
-import { Award, Crown, Shield, Trophy } from "lucide-react";
+import { Calendar, CheckCheck, CheckCircle2, Inbox } from "lucide-react";
 import { useCompletions } from "../hooks/useCompletions";
 import { detectAchievements } from "../lib/stats";
 import { Card, CardBody, CardHeader, CardTitle, Pill } from "../components/ui";
@@ -17,42 +17,33 @@ export function HallOfFameView() {
   return (
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-3">
-        <Trophy3 icon={<Trophy />} label="Perfect days" value={counts.perfect} accent="from-accent/20" />
-        <Trophy3 icon={<Shield />} label="Warrior weeks" value={counts.warrior} accent="from-warn/20" />
-        <Trophy3 icon={<Crown />} label="Iron months" value={counts.iron} accent="from-accent/30" />
+        <CountCard icon={<CheckCircle2 />} label="Full days" value={counts.perfect} />
+        <CountCard icon={<CheckCheck />} label="Weeks · 6+ days" value={counts.warrior} />
+        <CountCard icon={<Calendar />} label="Months · 25+ days" value={counts.iron} />
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Hall of Fame</CardTitle>
-          <span className="text-xs text-muted">
-            {achievements.length} earned
-          </span>
+          <CardTitle>History</CardTitle>
+          <span className="text-xs text-muted">{achievements.length} milestones</span>
         </CardHeader>
         <CardBody>
           {achievements.length === 0 ? (
             <div className="flex flex-col items-center gap-2 py-12 text-center">
-              <Award className="h-10 w-10 text-muted/50" />
+              <Inbox className="h-10 w-10 text-muted/50" />
               <p className="text-sm text-muted">
-                No badges yet. Complete every task today to earn your first
-                Perfect Day.
+                Nothing yet. Complete every task in a day for it to land here.
               </p>
             </div>
           ) : (
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {achievements.map((a) => {
-                const tone =
-                  a.kind === "iron-month"
-                    ? "accent"
-                    : a.kind === "warrior-week"
-                      ? "warn"
-                      : "accent";
                 const Icon =
                   a.kind === "iron-month"
-                    ? Crown
+                    ? Calendar
                     : a.kind === "warrior-week"
-                      ? Shield
-                      : Trophy;
+                      ? CheckCheck
+                      : CheckCircle2;
                 const dateLabel =
                   a.kind === "iron-month"
                     ? fromIso(a.date).toLocaleDateString(undefined, {
@@ -65,15 +56,11 @@ export function HallOfFameView() {
                 return (
                   <div
                     key={a.id}
-                    className="rounded-2xl border border-edge bg-gradient-to-br from-edge/40 to-panel p-4"
+                    className="rounded-2xl border border-edge bg-panel p-4"
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <Icon
-                        className={`h-7 w-7 ${
-                          a.kind === "warrior-week" ? "text-warn" : "text-accent"
-                        }`}
-                      />
-                      <Pill tone={tone}>{a.label}</Pill>
+                      <Icon className="h-6 w-6 text-accent" />
+                      <Pill tone="accent">{a.label}</Pill>
                     </div>
                     <div className="mt-3 text-sm font-medium">{dateLabel}</div>
                     <div className="text-xs text-muted">{a.detail}</div>
@@ -88,19 +75,17 @@ export function HallOfFameView() {
   );
 }
 
-function Trophy3({
+function CountCard({
   icon,
   label,
   value,
-  accent,
 }: {
   icon: React.ReactNode;
   label: string;
   value: number;
-  accent: string;
 }) {
   return (
-    <Card className={`bg-gradient-to-br ${accent} via-panel to-panel`}>
+    <Card>
       <CardBody className="pt-5">
         <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted">
           <span className="text-accent">{icon}</span>

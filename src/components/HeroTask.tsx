@@ -1,4 +1,4 @@
-import { Flame, Pause, Sunrise } from "lucide-react";
+import { CircleDot, Clock3, Pause } from "lucide-react";
 import {
   findActiveTask,
   findNextTask,
@@ -60,12 +60,12 @@ export function HeroTask({ isDone, onToggle }: Props) {
           <div className="flex items-center gap-2">
             {isActive ? (
               <Pill tone="accent">
-                <Flame className="h-3 w-3" />
-                Active now
+                <CircleDot className="h-3 w-3" />
+                Now
               </Pill>
             ) : (
               <Pill>
-                <Sunrise className="h-3 w-3" />
+                <Clock3 className="h-3 w-3" />
                 Up next
               </Pill>
             )}

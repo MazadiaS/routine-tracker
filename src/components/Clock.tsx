@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Calendar, Clock as ClockIcon, Flame } from "lucide-react";
+import { Calendar, Clock as ClockIcon, CheckCheck } from "lucide-react";
 import { findNextTask, formatCountdown, nowMinutes, toMinutes } from "../lib/schedule";
 import { prettyDate, prettyTime } from "../lib/date";
 import { Pill } from "./ui";
@@ -29,8 +29,8 @@ export function Clock({ streak }: { streak: number }) {
       </span>
       {streak > 0 && (
         <Pill tone="accent">
-          <Flame className="h-3 w-3" />
-          {streak}-day streak
+          <CheckCheck className="h-3 w-3" />
+          {streak} day{streak === 1 ? "" : "s"} in a row
         </Pill>
       )}
       {next && countdown && (

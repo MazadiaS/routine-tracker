@@ -1,4 +1,4 @@
-import { Briefcase, Cloud, Flame, Target } from "lucide-react";
+import { Briefcase, Calendar, Cloud, TrendingUp } from "lucide-react";
 import { useCompletions } from "../hooks/useCompletions";
 import { Heatmap } from "../components/Heatmap";
 import { Card, CardBody, CardHeader, CardTitle } from "../components/ui";
@@ -29,14 +29,14 @@ export function InsightsView() {
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat
-          icon={<Flame className="h-4 w-4" />}
-          label="Current streak"
+          icon={<TrendingUp className="h-4 w-4" />}
+          label="Run of full days"
           value={`${streak}`}
           unit="days"
         />
         <Stat
-          icon={<Target className="h-4 w-4" />}
-          label="Perfect days · 30d"
+          icon={<Calendar className="h-4 w-4" />}
+          label="Full days · this month"
           value={`${monthPerfect}`}
           unit={`/ ${monthStats.length}`}
         />
@@ -59,9 +59,9 @@ export function InsightsView() {
       <Card>
         <CardHeader>
           <div>
-            <CardTitle>Discipline grid · 12 months</CardTitle>
+            <CardTitle>Activity · 12 months</CardTitle>
             <p className="mt-0.5 text-xs text-muted">
-              {yearPerfect} perfect days in the last year
+              {yearPerfect} full days in the last year
             </p>
           </div>
         </CardHeader>

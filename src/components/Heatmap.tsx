@@ -52,8 +52,8 @@ export function Heatmap({ map, today = new Date() }: Props) {
             const dateStr = typeof v.date === "string" ? v.date : isoDate(fromIso(v.date as unknown as string));
             const s = byDate.get(dateStr);
             if (!s || s.required === 0) return `${dateStr}: rest`;
-            if (s.perfect) return `${dateStr}: ${s.done}/${s.required} — PERFECT DAY`;
-            return `${dateStr}: ${s.done}/${s.required} tasks completed`;
+            if (s.perfect) return `${dateStr}: ${s.done}/${s.required} — all done`;
+            return `${dateStr}: ${s.done}/${s.required} tasks done`;
           }}
         />
       </div>
@@ -70,7 +70,7 @@ function Legend() {
       <span className="h-3 w-3 rounded-sm bg-accentLow" />
       <span className="h-3 w-3 rounded-sm bg-accentMid" />
       <span className="h-3 w-3 rounded-sm bg-accent" />
-      <span>Perfect</span>
+      <span>All done</span>
     </div>
   );
 }

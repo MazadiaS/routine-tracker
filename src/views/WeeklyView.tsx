@@ -58,7 +58,7 @@ export function WeeklyView() {
                   </div>
                   {s.perfect && (
                     <div className="mt-2">
-                      <Pill tone="accent">Perfect</Pill>
+                      <Pill tone="accent">All done</Pill>
                     </div>
                   )}
                 </div>

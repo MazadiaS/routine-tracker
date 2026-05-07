@@ -70,10 +70,8 @@ export function totalHoursByCategory(
   return total;
 }
 
-// Achievement detection.
-// Perfect Day: every required task complete that day.
-// Warrior Week: 6/7 perfect days in a Mon-Sun week.
-// Iron Month: 25+ perfect days in a calendar month.
+// Milestone detection: full day (all tasks), 6+ full days in a Mon–Sun week,
+// and 25+ full days in a calendar month.
 export function detectAchievements(map: CompletionMap, today = new Date()): Achievement[] {
   const dates = Object.keys(map).sort();
   if (dates.length === 0) return [];
@@ -92,8 +90,8 @@ export function detectAchievements(map: CompletionMap, today = new Date()): Achi
       out.push({
         id: `perfect-${s.date}`,
         kind: "perfect-day",
-        label: "Perfect Day",
-        detail: `${s.done}/${s.required} tasks completed`,
+        label: "Full day",
+        detail: `${s.done}/${s.required} tasks`,
         date: s.date,
       });
     }
@@ -109,8 +107,8 @@ export function detectAchievements(map: CompletionMap, today = new Date()): Achi
       out.push({
         id: `warrior-${isoDate(weekCursor)}`,
         kind: "warrior-week",
-        label: "Warrior Week",
-        detail: `${perfect}/7 perfect days`,
+        label: "6+ days",
+        detail: `${perfect}/7 full days this week`,
         date: isoDate(weekCursor),
       });
     }
@@ -131,8 +129,8 @@ export function detectAchievements(map: CompletionMap, today = new Date()): Achi
       out.push({
         id: `iron-${isoDate(monthCursor)}`,
         kind: "iron-month",
-        label: "Iron Month",
-        detail: `${perfect} perfect days`,
+        label: "25+ days",
+        detail: `${perfect} full days`,
         date: isoDate(monthCursor),
       });
     }

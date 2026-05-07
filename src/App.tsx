@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Activity, BarChart3, CalendarDays, Trophy } from "lucide-react";
+import { Activity, BarChart3, CalendarDays, History } from "lucide-react";
 import { DailyView } from "./views/DailyView";
 import { WeeklyView } from "./views/WeeklyView";
 import { InsightsView } from "./views/InsightsView";
@@ -13,7 +13,7 @@ const TABS: { id: Tab; label: string; icon: React.ComponentType<{ className?: st
   { id: "daily", label: "Daily", icon: Activity },
   { id: "weekly", label: "Weekly", icon: CalendarDays },
   { id: "insights", label: "Insights", icon: BarChart3 },
-  { id: "hall", label: "Hall of Fame", icon: Trophy },
+  { id: "hall", label: "History", icon: History },
 ];
 
 export default function App() {
@@ -50,8 +50,8 @@ function Header() {
           <Activity className="h-5 w-5" />
         </div>
         <div>
-          <h1 className="text-lg font-semibold tracking-tight">Discipline</h1>
-          <p className="text-xs text-muted">Hard mode. No excuses.</p>
+          <h1 className="text-lg font-semibold tracking-tight">Routine</h1>
+          <p className="text-xs text-muted">Daily schedule</p>
         </div>
       </div>
       <span
