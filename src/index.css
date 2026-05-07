@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  background: #000000;
+  color: #fafafa;
+  margin: 0;
+  min-height: 100svh;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* react-calendar-heatmap overrides */
+.react-calendar-heatmap text {
+  fill: #737373;
+  font-size: 8px;
+}
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 6px;
+}
+.react-calendar-heatmap rect {
+  rx: 2;
+  ry: 2;
+}
+.react-calendar-heatmap .color-empty {
+  fill: #161616;
+  stroke: #1a1a1a;
+}
+.react-calendar-heatmap .color-scale-1 {
+  fill: #0a3d1a;
+}
+.react-calendar-heatmap .color-scale-2 {
+  fill: #15803d;
+}
+.react-calendar-heatmap .color-scale-3 {
+  fill: #22c55e;
+}
+.react-calendar-heatmap .color-perfect {
+  fill: #22c55e;
+  filter: drop-shadow(0 0 2px rgba(34, 197, 94, 0.6));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
+
+/* Checkbox tactile feel */
+.discipline-check {
+  transition:
+    transform 120ms ease-out,
+    background 120ms ease-out,
+    border-color 120ms ease-out;
+}
+.discipline-check:active {
+  transform: scale(0.94);
+}
